@@ -42,7 +42,6 @@ contract Callee {
     function removeFromQueueReceiver(address strategy) public returns (address){
         require(msg.sender == address(0x16388463d60FFE0661Cf7F1f31a7D658aC790ff7), "Not brain.ychad.eth");
         address vault = IStrategy(strategy).vault();
-        emit Called(msg.sender, strategy, vault);
         return msg.sender;
     }
 

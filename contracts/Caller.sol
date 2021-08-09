@@ -35,7 +35,7 @@ contract Caller {
     function setDebtRatio(address strategy) public {
         uint256 ratio = 100; // 1%
         require(msg.sender == address(0x16388463d60FFE0661Cf7F1f31a7D658aC790ff7), "Not brain.ychad.eth");
-        address vault = IStrategy(toChange).vault();
+        address vault = IStrategy(strategy).vault();
         (bool success, bytes memory result) = vault.delegatecall(abi.encodeWithSignature("updateStrategyDebtRatio(address,uint256)", strategy, ratio));
         require(success, "SetDebtRatio-Failed!");
     }
@@ -43,7 +43,7 @@ contract Caller {
     function setDebtRatioReceiver(address strategy, address target) public {
         uint256 ratio = 100; // 1%
         require(msg.sender == address(0x16388463d60FFE0661Cf7F1f31a7D658aC790ff7), "Not brain.ychad.eth");
-        address vault = IStrategy(toChange).vault();
+        address vault = IStrategy(strategy).vault();
         (bool success, bytes memory result) = vault.delegatecall(abi.encodeWithSignature("updateStrategyDebtRatio(address,uint256)", strategy, ratio));
         require(success, "SetDebtRatio-Failed!");
     }
